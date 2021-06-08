@@ -38,11 +38,11 @@ int main() {
   }
 	
   string command = "node index.js";
-  if(name.size() > 0) command += string(" ") + name;
-  if(path.size() > 0) command += string(" --path ") + path;
-  if(new_name.size() > 0) command += string(" --name ") + new_name;
-  if(season.size() > 0) command += string(" --season ") + season;
-  if(episode.size() > 0) command += string(" --episode ") + episode;
+  if(name.size() > 0) command += string(" ") + '"' + name + '"';
+  if(path.size() > 0) command += string(" --path ") + '"' + path + '"';
+  if(new_name.size() > 0) command += string(" --name ") + '"' + new_name + '"';
+  if(season.size() > 0) command += string(" --season ") + '"' + season + '"';
+  if(episode.size() > 0) command += string(" --episode ") + '"' + episode + '"';
  
   cout<<command<<endl; 
   system(command.c_str());
