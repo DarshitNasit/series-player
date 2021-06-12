@@ -9,6 +9,7 @@ const argv = process.argv;
 let index = 2;
 
 let name, new_name, path, current_season, current_episode;
+let accepted_mime_types = [".mp4", ".mov", ".wmv", ".mkv"];
 
 async function main() {
 	while (index < argv.length) {
@@ -73,10 +74,15 @@ async function main() {
 		episodes = episodes
 			.filter((episode) => {
 				try {
-					return (
-						fs.lstatSync(season_path + "\\" + episode).isFile() &&
-						episode.endsWith(".mkv" || ".mp4" || ".mov")
+					let accepted_mime = false;
+					accepted_mime_types.forEach(
+						(mime) => (accepted_mime |= episode.endsWith(mime))
 					);
+
+					let accepted = true;
+					accepted &= fs.lstatSync(season_path + "\\" + episode).isFile();
+					accepted &= accepted_mime;
+					return accepted;
 				} catch (error) {
 					return false;
 				}
