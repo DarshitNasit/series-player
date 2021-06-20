@@ -4,14 +4,17 @@
 	"description": "A program that starts playing series from where left of in vlc",
 	"main": "index.js",
 	"scripts": {
-		"start": "nodemon index.js"
+		"start": "node build/index.js"
 	},
 	"author": "Darshit Nasit",
 	"license": "MIT",
 	"devDependencies": {
-		"nodemon": "^2.0.7"
+		"@types/express": "^4.17.12",
+		"@types/mongoose": "^5.11.97",
+		"@types/readline-sync": "^1.4.3"
 	},
 	"dependencies": {
-		"mongoose": "^5.12.12"
+		"mongoose": "^5.12.12",
+		"readline-sync": "^1.4.10"
 	}
 }

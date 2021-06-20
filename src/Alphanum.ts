@@ -1,6 +1,6 @@
-module.exports = (a, b) => {
-	let aa = chunkify(a.toLowerCase());
-	let bb = chunkify(b.toLowerCase());
+export default function alphanum(a: string, b: string) {
+	let aa = make_chunks(a.toLowerCase());
+	let bb = make_chunks(b.toLowerCase());
 
 	for (let x = 0; aa[x] && bb[x]; x++) {
 		if (aa[x] !== bb[x]) {
@@ -12,14 +12,14 @@ module.exports = (a, b) => {
 		}
 	}
 	return aa.length - bb.length;
-};
+}
 
-function chunkify(t) {
+function make_chunks(t: string) {
 	let tz = [];
-	let i, j;
+	let i: number, j: string;
 	let x = 0,
 		y = -1,
-		n = 0;
+		n = false;
 
 	while ((i = (j = t.charAt(x++)).charCodeAt(0))) {
 		let m = i === 46 || (i >= 48 && i <= 57);
